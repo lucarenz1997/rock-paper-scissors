@@ -1,16 +1,10 @@
 
-
-for(let i = 0; i < 100; i++){
-    console.log(getRandom());
-}
 let rounds = parseInt(prompt("How many rounds do you want to play?"));
-console.log(rounds);
 let roundCounter =1;
 
 while(roundCounter <= rounds){
     let playersChoice = (prompt("Rock, Paper or Scissors?"));
     playersChoice = playersChoice.toLowerCase();
-    console.log(playersChoice);
     if(playersChoice !== "rock" && playersChoice !== "paper" && playersChoice !== "scissors"){
         playersChoice = (prompt("Seems like you mistyped your answer. Try again").toLowerCase);
     }else{
