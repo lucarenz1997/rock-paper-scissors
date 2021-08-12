@@ -1,7 +1,21 @@
 
-let rounds = parseInt(prompt("How many rounds do you want to play?"));
+// let rounds = parseInt(prompt("How many rounds do you want to play?"));
 let roundCounter =1;
+console.log("START");
 
+const keys = document.querySelectorAll('.decision');
+keys.forEach((key) =>{
+    key.addEventListener("click", () => {
+        const value = key.value;
+        console.log(value);
+        evaluateWinner(key.value, computerPlay());
+      
+});
+});
+ 
+
+  // OLD STUFF
+  /*
 while(roundCounter <= rounds){
     let playersChoice = (prompt("Rock, Paper or Scissors?"));
     playersChoice = playersChoice.toLowerCase();
@@ -12,6 +26,7 @@ while(roundCounter <= rounds){
         roundCounter++;
     }
 }
+*/
 
 function evaluateWinner(player, computer){
     let result;
@@ -32,11 +47,11 @@ function evaluateWinner(player, computer){
     }
     
     if(result ==="You win. "){
-        return result + player + " beats " + computer;
+        document.querySelector(".result").textContent = result + player + " beats " + computer;
     }else if (result ==="Draw. "){
-        return result;
+        document.querySelector(".result").textContent  = result;
     }else if(result ==="You loose. "){
-        return result + computer + " beats " + player;
+        document.querySelector(".result").textContent  = result + computer + " beats " + player;
     }
 }
 
