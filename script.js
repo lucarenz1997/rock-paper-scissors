@@ -1,7 +1,31 @@
 
-let rounds = parseInt(prompt("How many rounds do you want to play?"));
+// let rounds = parseInt(prompt("How many rounds do you want to play?"));
 let roundCounter =1;
+console.log("START");
 
+const keys = document.querySelectorAll('.decision');
+keys.forEach((key) =>{
+    key.addEventListener("click", () => {
+        document.querySelector(".round-five").textContent = "";
+        if(roundCounter <= 5){
+            evaluateWinner(key.value, computerPlay(), roundCounter);
+            roundCounter++;
+        }else{
+            roundCounter = 1;
+            wins = 0;
+            draws = 0;
+            losses = 0;
+            evaluateWinner(key.value, computerPlay(), roundCounter);
+            roundCounter++;
+        }
+        
+      
+});
+});
+ 
+
+  // OLD STUFF
+  /*
 while(roundCounter <= rounds){
     let playersChoice = (prompt("Rock, Paper or Scissors?"));
     playersChoice = playersChoice.toLowerCase();
@@ -12,8 +36,9 @@ while(roundCounter <= rounds){
         roundCounter++;
     }
 }
+*/
 
-function evaluateWinner(player, computer){
+function evaluateWinner(player, computer, round){
     let result;
     if(player === computer){
         result = "Draw. ";
@@ -32,12 +57,13 @@ function evaluateWinner(player, computer){
     }
     
     if(result ==="You win. "){
-        return result + player + " beats " + computer;
+        document.querySelector(".result").textContent = "Round " + round + ": " + result + player + " beats " + computer;
     }else if (result ==="Draw. "){
-        return result;
+        document.querySelector(".result").textContent  = "Round " + round + ": " +result;
     }else if(result ==="You loose. "){
-        return result + computer + " beats " + player;
+        document.querySelector(".result").textContent  = "Round " + round + ": " + result + computer + " beats " + player;
     }
+    
 }
 
 function computerPlay(){
